@@ -1,44 +1,33 @@
 using TechTalk.SpecFlow;
 using SeleniumSpecflowFramework.Pages;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using OpenQA.Selenium;
+using SeleniumSpecflowFramework.Resources;
 
 namespace SeleniumSpecflowFramework.StepDefinitions
 {
     [Binding]
     public class LoginSteps
     {
+        private readonly IWebDriver _driver;
         private readonly LoginPage _loginPage;
 
         public LoginSteps()
         {
-            _loginPage = new LoginPage();
+            _driver = (IWebDriver)ScenarioContext.Current["WebDriver"];
+            _loginPage = new LoginPage(_driver);
         }
 
-        [Given(@"I launch the application")]
-        public void GivenILaunchTheApplication()
+        [Given(@"I login with valid credentials")]
+        public void GivenILoginWithValidCredentials()
         {
-            DriverFactory.InitializeDriver();
-            _loginPage.NavigateToLoginPage();
+            _loginPage.Login(TestData.LoginUsername, TestData.LoginPassword);
         }
 
-        [When(@"I enter username ""(.*)"" and password ""(.*)""")]
-        public void WhenIEnterUsernameAndPassword(string username, string password)
+        [Then(@"I should be redirected to the products page")]
+        public void ThenIShouldBeRedirectedToTheProductsPage()
         {
-            _loginPage.EnterUsername(username);
-            _loginPage.EnterPassword(password);
-        }
-
-        [When(@"I click on login button")]
-        public void WhenIClickOnLoginButton()
-        {
-            _loginPage.ClickLogin();
-        }
-
-        [Then(@"I should be navigated to the homepage")]
-        public void ThenIShouldBeNavigatedToTheHomepage()
-        {
-            Assert.IsTrue(_loginPage.IsLoginSuccessful());
-            DriverFactory.QuitDriver();
+            var title = _driver.FindElement(By.ClassName("title")).Text;
+            Assert.AreEqual("Products", title);
         }
     }
 }
