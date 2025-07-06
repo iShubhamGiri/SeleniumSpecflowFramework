@@ -1,8 +1,5 @@
-Feature: Login Feature
+Feature: Login Functionality
 
-  @Smoke
-  Scenario: Valid user logs into the system
-    Given I launch the application
-    When I enter username "user" and password "pass"
-    And I click on login button
-    Then I should be navigated to the homepage
+  Scenario: Successful login with valid credentials
+    Given I login with valid credentials
+    Then I should be redirected to the products page
