@@ -62,49 +62,49 @@ SpecFlow
 SpecFlow.MSTest
 SpecFlow.Tools.MsBuild.Generation
 MSTest.TestFramework
-
 These packages enable BDD test writing, execution, and browser control.
 
-🧪 4. Run Tests via Visual Studio
-Open Test Explorer → Run all or selected tests
+## 🧪 4. Run Tests via Visual Studio
 
-Or right-click on → Run SpecFlow Scenarios.feature
+- Open **Test Explorer** → Run all or selected tests
+- Or right-click on any `.feature` file → Select **Run SpecFlow Scenarios**
+- Supports tag-based execution (e.g., `@Smoke`, `@Regression`, `@Login`)
 
-Tag-based execution supported (e.g., @Smoke, @Regression)
+### ✅ Tips:
+- Ensure `SpecFlow.MSTest` is properly installed.
+- Use `[BeforeScenario]`, `[AfterScenario]` in `Hooks` to manage driver lifecycle.
+- Reports (like ExtentReports) can be generated in the `Reports/` folder.
 
-🌐 5. Upload Framework to GitHub (Feature Branch Workflow)
-🔄 Steps using Visual Studio Git Integration:
-Click Git → Create Git Repository
+---
 
-Set remote GitHub URL
+## 🌐 5. Upload Framework to GitHub (Feature Branch Workflow)
 
-Select Add solution to source control
+### 🔄 Steps using Visual Studio Git Integration:
 
-Create Feature Branch
+1. **Initialize Git Repository**
+   - Click `Git` > `Create Git Repository`
+   - Enter GitHub remote URL (or create new repo)
+   - Select "Add solution to source control"
 
-From bottom-left Git panel or Git > New Branch
+2. **Create a Feature Branch**
+   - Click `Git` (bottom left) > `New Branch`
+   - Example name: `feature/login-tests`
+   - Make changes, add your `.feature` and automation code
 
-Example: feature/login-tests
+3. **Push Code to GitHub**
+   - Go to `Git Changes` tab
+   - Write a commit message → Click `Commit All`
+   - Click `Push` to send to remote branch
 
-Push Code to GitHub
+4. **Create Pull Request (PR)**
+   - On GitHub → Open your repo → Click **Compare & Pull Request**
+   - Ensure base is `main` and compare is your `feature/...` branch
+   - Add title, description, and assign reviewers if needed
 
-Open Git Changes tab
+5. **Review and Merge**
+   - After code review and approval, click **Merge Pull Request**
+   - Delete the feature branch after merge (optional but clean)
 
-Add commit message → Commit All
+✅ Now your framework is updated and merged to the `main` branch on GitHub with the full folder structure and test setup.
 
-Click Push
-
-Create Pull Request (PR)
-
-Go to GitHub → New Pull Request from feature/... to main
-
-Add title, description, and reviewers
-
-Code Review & Merge
-
-After review, merge PR into main
-
-GitHub automatically updates the main branch
-
-✅ Your folder structure and framework are now versioned and live on GitHub.
 
