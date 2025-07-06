@@ -1,7 +1,9 @@
-using TechTalk.SpecFlow;
-using SeleniumSpecflowFramework.Pages;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using SeleniumSpecflowFramework.Resources;
+using SeleniumSpecflowFramework.Drivers;
+using SeleniumSpecflowFramework.Helpers;
+using SeleniumSpecflowFramework.Pages;
+using TechTalk.SpecFlow;
 
 namespace SeleniumSpecflowFramework.StepDefinitions
 {
@@ -11,23 +13,31 @@ namespace SeleniumSpecflowFramework.StepDefinitions
         private readonly IWebDriver _driver;
         private readonly LoginPage _loginPage;
 
-        public LoginSteps()
+        public LoginSteps(BrowserDriver browserDriver)
         {
-            _driver = (IWebDriver)ScenarioContext.Current["WebDriver"];
+            _driver = browserDriver.Current;
             _loginPage = new LoginPage(_driver);
         }
 
-        [Given(@"I login with valid credentials")]
-        public void GivenILoginWithValidCredentials()
+        [Given(@"I launch the application")]
+        public void GivenILaunchTheApplication()
         {
-            _loginPage.Login(TestData.LoginUsername, TestData.LoginPassword);
+            string baseUrl = ResxReader.Get("BaseUrl");
+            _driver.Navigate().GoToUrl(baseUrl);
         }
 
-        [Then(@"I should be redirected to the products page")]
-        public void ThenIShouldBeRedirectedToTheProductsPage()
+        [When(@"I login with valid credentials")]
+        public void WhenILoginWithValidCredentials()
         {
-            var title = _driver.FindElement(By.ClassName("title")).Text;
-            Assert.AreEqual("Products", title);
+            string username = ResxReader.Get("DefaultUsername");
+            string password = ResxReader.Get("DefaultPassword");
+            _loginPage.Login(username, password);
+        }
+
+        [Then(@"I should see the dashboard")]
+        public void ThenIShouldSeeTheDashboard()
+        {
+            Assert.IsTrue(_loginPage.IsDashboardVisible(), "Dashboard is not visible after login.");
         }
     }
 }
