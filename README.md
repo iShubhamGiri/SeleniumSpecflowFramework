@@ -39,10 +39,10 @@ SeleniumSpecflowFramework/
 
 ## 📦 Required NuGet Packages
 
-Selenium.WebDriver
-Selenium.Support
-SpecFlow
-SpecFlow.MSTest
-SpecFlow.Tools.MsBuild.Generation
-MSTest.TestFramework
+Selenium.WebDriver, 
+Selenium.Support, 
+SpecFlow, 
+SpecFlow.MSTest, 
+SpecFlow.Tools.MsBuild.Generation, 
+MSTest.TestFramework, 
 Selenium.WebDriver.ChromeDriver
