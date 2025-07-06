@@ -108,15 +108,6 @@ These packages enable BDD-style test writing, MSTest execution, and browser auto
 
 ---
 
-## 🧩 Optional Add-ons
-
-- 🔧 Add `TestData.resx` for centralized test data (URL, credentials, etc.)
-- 📸 Add screenshot logic in `[AfterScenario]` hook for failure tracking
-- 📊 Integrate ExtentReports or Allure for rich HTML reporting
-- ⚙️ Add dynamic browser selection from config
-
----
-
 Happy Testing!  
 ⭐ Star this repository if you found it useful.
 
