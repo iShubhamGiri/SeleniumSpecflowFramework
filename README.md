@@ -54,7 +54,6 @@ In Visual Studio:
 1. Right-click on the **project** → `Manage NuGet Packages`
 2. Install the following under the **Browse** tab:
 
-```plaintext
 Selenium.WebDriver
 Selenium.Support
 Selenium.WebDriver.ChromeDriver
