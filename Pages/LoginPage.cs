@@ -6,24 +6,24 @@ namespace SeleniumSpecflowFramework.Pages
     {
         private readonly IWebDriver _driver;
 
-        public LoginPage()
+        public LoginPage(IWebDriver driver)
         {
-            _driver = DriverFactory.Driver;
+            _driver = driver;
         }
 
-        private IWebElement UsernameField => _driver.FindElement(By.Id("user-name"));
-        private IWebElement PasswordField => _driver.FindElement(By.Id("password"));
+        private IWebElement Username => _driver.FindElement(By.Id("user-name"));
+        private IWebElement Password => _driver.FindElement(By.Id("password"));
         private IWebElement LoginButton => _driver.FindElement(By.Id("login-button"));
-        private IWebElement InventoryContainer => _driver.FindElement(By.Id("inventory_container"));
 
-        public void NavigateToLoginPage() => _driver.Navigate().GoToUrl("https://www.saucedemo.com/");
+        public void Login(string username, string password)
+        {
+            Username.Clear();
+            Username.SendKeys(username);
 
-        public void EnterUsername(string username) => UsernameField.SendKeys(username);
+            Password.Clear();
+            Password.SendKeys(password);
 
-        public void EnterPassword(string password) => PasswordField.SendKeys(password);
-
-        public void ClickLogin() => LoginButton.Click();
-
-        public bool IsLoginSuccessful() => InventoryContainer.Displayed;
+            LoginButton.Click();
+        }
     }
 }
