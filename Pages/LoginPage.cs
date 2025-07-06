@@ -11,19 +11,31 @@ namespace SeleniumSpecflowFramework.Pages
             _driver = driver;
         }
 
-        private IWebElement Username => _driver.FindElement(By.Id("user-name"));
-        private IWebElement Password => _driver.FindElement(By.Id("password"));
-        private IWebElement LoginButton => _driver.FindElement(By.Id("login-button"));
+        private IWebElement TxtUsername => _driver.FindElement(By.Id("username"));
+        private IWebElement TxtPassword => _driver.FindElement(By.Id("password"));
+        private IWebElement BtnLogin => _driver.FindElement(By.Id("loginButton"));
 
         public void Login(string username, string password)
         {
-            Username.Clear();
-            Username.SendKeys(username);
+            TxtUsername.Clear();
+            TxtUsername.SendKeys(username);
 
-            Password.Clear();
-            Password.SendKeys(password);
+            TxtPassword.Clear();
+            TxtPassword.SendKeys(password);
 
-            LoginButton.Click();
+            BtnLogin.Click();
+        }
+
+        public bool IsDashboardVisible()
+        {
+            try
+            {
+                return _driver.FindElement(By.Id("dashboard")).Displayed;
+            }
+            catch
+            {
+                return false;
+            }
         }
     }
 }
