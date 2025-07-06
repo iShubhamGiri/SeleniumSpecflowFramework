@@ -30,22 +30,16 @@ A clean, scalable, and maintainable UI automation framework built with enterpris
 ## 📁 2. Folder Structure Design
 
 Once the project is created, organize your folders as:
-
-Selenium
-├── StepDefinitions/ # SpecFlow step implementations
-├── Pages/ # Page Object Model (POM) classes
+Cell
 ├── Drivers/ # WebDriver and browser setup
 ├── Helpers/ # Utilities, waiters, config readers
-├── Hooks/ # BeforeScenario, AfterScenario logic
-├── TestData/ # Test input files (JSON, XML)
+├── Hooks/ # [BeforeScenario], [AfterScenario] setup/teardown
+├── TestData/ # Test input files (.resx, JSON, XML)
 ├── Reports/ # ExtentReports & screenshots
 └── SeleniumSpecflowFramework.csproj
 
 
-
 > ℹ️ This modular structure mirrors professional QA automation practices.
-
----
 
 ## 📦 3. Install Required NuGet Packages
 
@@ -61,7 +55,11 @@ SpecFlow
 SpecFlow.MSTest
 SpecFlow.Tools.MsBuild.Generation
 MSTest.TestFramework
-These packages enable BDD test writing, execution, and browser control.
+
+
+These packages enable BDD-style test writing, MSTest execution, and browser automation with Selenium.
+
+---
 
 ## 🧪 4. Run Tests via Visual Studio
 
@@ -72,7 +70,7 @@ These packages enable BDD test writing, execution, and browser control.
 ### ✅ Tips:
 - Ensure `SpecFlow.MSTest` is properly installed.
 - Use `[BeforeScenario]`, `[AfterScenario]` in `Hooks` to manage driver lifecycle.
-- Reports (like ExtentReports) can be generated in the `Reports/` folder.
+- Reports (e.g., ExtentReports) can be configured to generate HTML output under `Reports/`.
 
 ---
 
@@ -82,28 +80,45 @@ These packages enable BDD test writing, execution, and browser control.
 
 1. **Initialize Git Repository**
    - Click `Git` > `Create Git Repository`
-   - Enter GitHub remote URL (or create new repo)
+   - Choose "GitHub" and log in if prompted
+   - Enter repo name, description (optional), and visibility
    - Select "Add solution to source control"
 
 2. **Create a Feature Branch**
-   - Click `Git` (bottom left) > `New Branch`
-   - Example name: `feature/login-tests`
-   - Make changes, add your `.feature` and automation code
+   - Click `Git` (bottom left of Visual Studio) > `New Branch`
+   - Example: `feature/login-tests`
+   - Make your changes: add feature files, page classes, step definitions, etc.
 
 3. **Push Code to GitHub**
    - Go to `Git Changes` tab
-   - Write a commit message → Click `Commit All`
-   - Click `Push` to send to remote branch
+   - Add a commit message → Click `Commit All`
+   - Click `Push` to send changes to your remote feature branch
 
 4. **Create Pull Request (PR)**
-   - On GitHub → Open your repo → Click **Compare & Pull Request**
-   - Ensure base is `main` and compare is your `feature/...` branch
-   - Add title, description, and assign reviewers if needed
+   - Go to [github.com](https://github.com)
+   - Navigate to your repo → Click **Compare & Pull Request**
+   - Set base = `main`, compare = your `feature/...` branch
+   - Add PR title, description, and assign reviewers if needed
 
 5. **Review and Merge**
-   - After code review and approval, click **Merge Pull Request**
-   - Delete the feature branch after merge (optional but clean)
+   - After review, click **Merge Pull Request**
+   - Optionally delete the feature branch after merging
 
-✅ Now your framework is updated and merged to the `main` branch on GitHub with the full folder structure and test setup.
+✅ Your professional automation framework is now versioned and maintained on GitHub.
+
+---
+
+## 🧩 Optional Add-ons
+
+- 🔧 Add `TestData.resx` for centralized test data (URL, credentials, etc.)
+- 📸 Add screenshot logic in `[AfterScenario]` hook for failure tracking
+- 📊 Integrate ExtentReports or Allure for rich HTML reporting
+- ⚙️ Add dynamic browser selection from config
+
+---
+
+Happy Testing!  
+⭐ Star this repository if you found it useful.
+
 
 
