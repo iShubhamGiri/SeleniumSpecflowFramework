@@ -1,6 +1,3 @@
-# SeleniumSpecflowFramework
-Professional Selenium + SpecFlow + MSTest UI Automation Framework
-
 # 🧪 SeleniumSpecflowFramework
 
 **Professional Selenium + SpecFlow + MSTest UI Automation Framework (.NET 8)**  
